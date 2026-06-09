@@ -149,14 +149,40 @@ The final goal is to make long-video understanding more stable, more interpretab
 
 ## References
 
-* Jingze Wu, Quan Zhang, Hongfei Suo, Zeqiang Cai, and Hongbo Chen. **Beyond Perceptual Shortcuts: Causal-Inspired Debiasing Optimization for Generalizable Video Reasoning in Lightweight MLLMs**. CVPR 2026 / arXiv, 2026.
+- Jingze Wu, Quan Zhang, Hongfei Suo, Zeqiang Cai, and Hongbo Chen.  
+  **Beyond Perceptual Shortcuts: Causal-Inspired Debiasing Optimization for Generalizable Video Reasoning in Lightweight MLLMs**.  
+  arXiv:2605.01324 / CVPR 2026.  
+  https://arxiv.org/abs/2605.01324
 
-* Xi Tang, Jihao Qiu, Lingxi Xie, Yunjie Tian, Jianbin Jiao, and Qixiang Ye. **Adaptive Keyframe Sampling for Long Video Understanding**. CVPR 2025 / arXiv, 2025.
+- VideoThinker official repository.  
+  **falonss703/VideoThinker**.  
+  https://github.com/falonss703/VideoThinker
 
-* Zirui Zhu, Hailun Xu, Yang Luo, Yong Liu, Kanchan Sarkar, Zhenheng Yang, and Yang You. **FOCUS: Efficient Keyframe Selection for Long Video Understanding**. arXiv, 2025.
+- Falconss1.  
+  **VideoThinker-R1-3B**. Hugging Face model page.  
+  https://huggingface.co/Falconss1/VideoThinker-R1-3B
 
-* Yifeng Yao, Yike Yun, Jing Wang, Huishuai Zhang, Dongyan Zhao, Ke Tian, Zhihao Wang, Minghui Qiu, and Tao Wang. **K-frames: Scene-Driven Any-k Keyframe Selection for Long Video Understanding**. arXiv / OpenReview, 2025.
+- Xi Tang, Jihao Qiu, Lingxi Xie, Yunjie Tian, Jianbin Jiao, and Qixiang Ye.  
+  **Adaptive Keyframe Sampling for Long Video Understanding**.  
+  arXiv:2502.21271, 2025.  
+  https://arxiv.org/abs/2502.21271
 
-* Berthold K. P. Horn and Brian G. Schunck. **Determining Optical Flow**. Artificial Intelligence, 1981.
+- Zirui Zhu, Hailun Xu, Yang Luo, Yong Liu, Kanchan Sarkar, Zhenheng Yang, and Yang You.  
+  **FOCUS: Efficient Keyframe Selection for Long Video Understanding**.  
+  arXiv:2510.27280, 2025.  
+  https://arxiv.org/abs/2510.27280
 
-* Gunnar Farnebäck. **Two-Frame Motion Estimation Based on Polynomial Expansion**. Scandinavian Conference on Image Analysis, 2003.
+- Yifeng Yao, Yike Yun, Jing Wang, Huishuai Zhang, Dongyan Zhao, Ke Tian, Zhihao Wang, Minghui Qiu, and Tao Wang.  
+  **K-frames: Scene-Driven Any-k Keyframe Selection for Long Video Understanding**.  
+  arXiv:2510.13891, 2025.  
+  https://arxiv.org/abs/2510.13891
+
+- Berthold K. P. Horn and Brian G. Schunck.  
+  **Determining Optical Flow**.  
+  Artificial Intelligence, 1981.  
+  https://www.cmor-faculty.rice.edu/~zhang/caam699/opt-flow/horn81.pdf
+
+- Gunnar Farnebäck.  
+  **Two-Frame Motion Estimation Based on Polynomial Expansion**.  
+  Scandinavian Conference on Image Analysis, 2003.  
+  https://link.springer.com/chapter/10.1007/3-540-45103-X_50
