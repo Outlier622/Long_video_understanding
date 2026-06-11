@@ -37,7 +37,6 @@ Fixed sampling is content-agnostic. It applies the same sampling interval to all
 
 This motivated the next step: selecting frames based not only on time, but also on visual information.
 
----
 
 ### 2. Content-Aware Keyframe Sampling
 
@@ -71,7 +70,6 @@ This showed that the content-aware sampler could run stably across the full epis
 
 Compared with fixed sampling, the content-aware version introduced visual scoring into the frame selection process. This made the selected keyframes depend on both temporal coverage and visual information density, rather than only fixed time intervals.
 
----
 
 ### 3. Optical-Flow-Based Motion Scoring
 
@@ -94,7 +92,6 @@ In manual comparison, the optical-flow version was more sensitive to dynamic vis
 
 However, this also introduced a trade-off. In dialogue-heavy, dark, or subtitle-heavy clips, a fixed optical-flow weight could over-emphasize small movements or low-level visual changes. This suggested that optical flow was useful, but applying the same motion weight to every clip was not always ideal.
 
----
 
 ### 4. Flow Weight Ablation
 
@@ -126,7 +123,6 @@ The ablation results suggested that neither `0.25` nor `0.15` was universally be
 
 This directly motivated adaptive optical-flow weighting.
 
----
 
 ### 5. Adaptive Optical-Flow Sampling
 
@@ -182,7 +178,6 @@ Among the six dynamic or action-oriented clips, three were assigned the higher o
 
 This result shows that the adaptive sampler did not apply a single global optical-flow weight to all clips. Instead, it adjusted motion sensitivity based on the estimated dynamic level of each clip.
 
----
 
 ## Summary of Iterations
 
