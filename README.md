@@ -18,7 +18,7 @@ This project uses VideoThinker-R1-3B as the base video reasoning model.
 
 VideoThinker-R1 focuses on improving reasoning in lightweight multimodal large language models. In this project, the model weights are not modified. The optimization is performed at the inference pipeline level, mainly by changing how video clips are sampled and represented as keyframes.
 
-## Research Process
+## Research Process and Evidence
 
 ### 1. Initial Approach: Fixed / Uniform Sampling
 
@@ -30,6 +30,14 @@ The first version of the pipeline used a fixed sampling strategy. Each video cli
 * It sometimes encouraged the model to infer actions that were not strongly supported by visible frames.
 
 Therefore, fixed sampling served as the initial version of the pipeline, but it was not sufficient for more complex long-video understanding tasks.
+
+**Evidence / Observation**
+
+Fixed sampling is content-agnostic. It applies the same sampling interval to all clips, regardless of whether the clip contains dialogue, screen transitions, explosions, monsters, combat, or fast camera movement. During manual inspection, this limitation was especially visible in clips where important visual events happened briefly between regular sampling positions.
+
+This motivated the next step: selecting frames based not only on time, but also on visual information.
+
+---
 
 ### 2. Content-Aware Keyframe Sampling
 
@@ -47,6 +55,24 @@ The sampler selected a fixed number of keyframes per clip while trying to preser
 
 This version improved the pipeline by selecting more meaningful frames instead of sampling only at fixed intervals.
 
+**Evidence / Observation**
+
+On `ep02`, the content-aware sampling pipeline successfully processed the full episode-level video into clip-level keyframe inputs.
+
+| Metric                      |     Value |
+| --------------------------- | --------: |
+| Episode                     |      ep02 |
+| Number of clips             |        73 |
+| Total video duration        | 24:09.760 |
+| Selected keyframes per clip |         8 |
+| Sampler errors              |         0 |
+
+This showed that the content-aware sampler could run stably across the full episode and produce a consistent number of selected keyframes for each clip.
+
+Compared with fixed sampling, the content-aware version introduced visual scoring into the frame selection process. This made the selected keyframes depend on both temporal coverage and visual information density, rather than only fixed time intervals.
+
+---
+
 ### 3. Optical-Flow-Based Motion Scoring
 
 After content-aware sampling, optical flow was added as an additional motion signal. The purpose was to better capture dynamic events such as:
@@ -60,16 +86,47 @@ After content-aware sampling, optical flow was added as an additional motion sig
 
 The optical-flow score was combined with the existing content-aware scores. This version improved some motion-heavy clips, but it also showed limitations. When optical flow was applied with a fixed weight to every clip, dialogue-heavy or low-motion clips could become overly sensitive to small movements, camera motion, or subtitles.
 
+**Evidence / Observation**
+
+Optical flow changed the sampling behavior by adding explicit motion sensitivity to the keyframe selection process.
+
+In manual comparison, the optical-flow version was more sensitive to dynamic visual changes such as screen transitions, explosions, monster movement, and combat-related motion. For example, in action-heavy clips, optical flow helped the sampler prioritize frames with stronger movement cues.
+
+However, this also introduced a trade-off. In dialogue-heavy, dark, or subtitle-heavy clips, a fixed optical-flow weight could over-emphasize small movements or low-level visual changes. This suggested that optical flow was useful, but applying the same motion weight to every clip was not always ideal.
+
+---
+
 ### 4. Flow Weight Ablation
 
 To understand the effect of optical flow, two fixed optical-flow weights were tested:
 
-* `flow_weight = 0.25`
-* `flow_weight = 0.15`
+```text
+flow_weight = 0.25
+flow_weight = 0.15
+```
 
 The higher weight was more useful for some dynamic or screen-transition scenes, but it could introduce over-sensitive frame selection in dialogue or dark scenes. The lower weight produced more conservative outputs, but it sometimes reduced the benefit of optical flow in highly dynamic scenes.
 
 This showed that a single global optical-flow weight is not ideal for all clip types.
+
+**Evidence / Observation**
+
+A small ablation study was conducted on selected clips with different visual characteristics.
+
+| Clip | Scene Type                       | Observation                                                                              |
+| ---: | -------------------------------- | ---------------------------------------------------------------------------------------- |
+|   22 | screen transition / control room | Higher flow weight was more sensitive to screen changes.                                 |
+|   23 | transformation + meeting         | Lower flow weight produced a more conservative result.                                   |
+|   48 | aircraft / explosion             | Motion cues were important, but all versions still had imperfect event coverage.         |
+|   59 | monster confrontation            | Higher flow weight helped with action sensitivity, but over-inference remained possible. |
+|   60 | combat / stance                  | Lower flow weight was more conservative for stance-heavy action.                         |
+|   70 | monster / fire / credits         | Lower flow weight reduced some over-sensitive behavior in dark scenes.                   |
+
+The ablation results suggested that neither `0.25` nor `0.15` was universally better. Instead, different clip types required different levels of motion sensitivity.
+
+This directly motivated adaptive optical-flow weighting.
+
+---
 
 ### 5. Adaptive Optical-Flow Sampling
 
@@ -92,6 +149,53 @@ dynamic_score_high = 0.75
 ```
 
 This design allows the sampler to reduce optical-flow influence in dialogue-heavy clips while still preserving stronger motion sensitivity for explosion, monster, aircraft, and combat scenes.
+
+**Evidence / Observation**
+
+Two groups of clips were tested to verify whether the adaptive sampler assigned different flow weights based on clip dynamics.
+
+#### Dialogue / Meeting-Oriented Clips
+
+| Clip | Dynamic Score | Category           | Flow Weight |
+| ---: | ------------: | ------------------ | ----------: |
+|   32 |         0.700 | moderately_dynamic |        0.15 |
+|   33 |         0.422 | moderately_dynamic |        0.15 |
+|   34 |         0.406 | moderately_dynamic |        0.15 |
+|   35 |         0.553 | moderately_dynamic |        0.15 |
+|   36 |         0.567 | moderately_dynamic |        0.15 |
+|   65 |         0.722 | moderately_dynamic |        0.15 |
+
+All six dialogue or meeting-oriented clips were assigned the medium optical-flow weight of `0.15`. This shows that the adaptive sampler avoided applying the highest motion weight to dialogue-heavy clips.
+
+#### Dynamic / Action-Oriented Clips
+
+| Clip | Dynamic Score | Category           | Flow Weight |
+| ---: | ------------: | ------------------ | ----------: |
+|   22 |         0.641 | moderately_dynamic |        0.15 |
+|   23 |         0.541 | moderately_dynamic |        0.15 |
+|   48 |         0.794 | motion_heavy       |        0.25 |
+|   59 |         0.805 | motion_heavy       |        0.25 |
+|   60 |         0.584 | moderately_dynamic |        0.15 |
+|   70 |         0.803 | motion_heavy       |        0.25 |
+
+Among the six dynamic or action-oriented clips, three were assigned the higher optical-flow weight of `0.25`. These clips involved stronger visual motion, such as explosions, monster scenes, fire, or heavy action.
+
+This result shows that the adaptive sampler did not apply a single global optical-flow weight to all clips. Instead, it adjusted motion sensitivity based on the estimated dynamic level of each clip.
+
+---
+
+## Summary of Iterations
+
+| Version | Sampling Strategy               | Main Purpose                              | Observation                                                                                          |
+| ------- | ------------------------------- | ----------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| v1      | Fixed / uniform sampling        | Simple initial sampling strategy          | Easy to implement, but content-agnostic                                                              |
+| v2      | Content-aware sampling          | Select visually informative frames        | Stable full-episode processing with 73 clips and 0 sampler errors                                    |
+| v3      | Fixed optical-flow sampling     | Add motion sensitivity                    | More sensitive to dynamic events, but sometimes over-sensitive                                       |
+| v3.1    | Lower fixed optical-flow weight | Test more conservative motion scoring     | Reduced over-sensitivity in some clips, but weakened dynamic-event sensitivity                       |
+| v4      | Adaptive optical-flow sampling  | Adjust flow weight based on clip dynamics | Dialogue clips used medium flow weight, while stronger action clips could receive higher flow weight |
+
+Overall, the project evolved from simple fixed sampling to a more adaptive keyframe selection strategy. The final adaptive optical-flow version provides a more flexible sampling pipeline by adjusting motion sensitivity according to clip-level dynamic scores.
+
 
 ## Experiment Versions
 
