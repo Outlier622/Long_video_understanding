@@ -108,10 +108,10 @@ On `ep02`, the content-aware sampling pipeline successfully processed the full e
 | Metric                      |     Value |
 | --------------------------- | --------: |
 | Episode                     |      ep02 |
-| Number of clips             |        73 |
+| Number of clips             |        74 |
 | Total video duration        | 24:09.760 |
 | Selected keyframes per clip |         8 |
-| Total selected keyframes    |       584 |
+| Total selected keyframes    |       592 |
 | Sampler errors              |         0 |
 
 This showed that the content-aware sampler could run stably across a full episode and produce a consistent number of selected keyframes for each clip.
