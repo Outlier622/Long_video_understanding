@@ -232,9 +232,9 @@ The pipeline was tested on `ep02`, a full episode-level video. The video was spl
 | --------------------------- | --------: |
 | Episode                     |      ep02 |
 | Total duration              | 24:09.760 |
-| Number of clips             |        73 |
+| Number of clips             |        74 |
 | Keyframes selected per clip |         8 |
-| Total selected keyframes    |       584 |
+| Total selected keyframes    |       592 |
 | Sampler errors              |         0 |
 
 The full-episode run shows that the pipeline can process a complete long video into stable clip-level keyframe inputs. Across 73 clips, the sampler produced 584 selected keyframes with no sampler errors.
