@@ -1,0 +1,6 @@
+*
+!src/
+!src/**
+!Dockerfile.worker
+!requirements_worker.txt
+!.dockerignore

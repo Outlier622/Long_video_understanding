@@ -1,0 +1,9 @@
+# PyTorch and CUDA are supplied by the base image:
+# pytorch/pytorch:2.6.0-cuda12.4-cudnn9-runtime
+
+transformers==4.51.3
+accelerate==1.6.0
+qwen-vl-utils==0.0.14
+boto3[crt]==1.43.51
+Pillow>=10.4,<12
+safetensors>=0.5,<1

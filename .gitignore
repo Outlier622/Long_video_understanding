@@ -1,0 +1,43 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# OS and editors
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Local environments
+.venv/
+venv/
+env/
+*.env
+.env.*
+
+# Local AWS and experiment configuration
+batch-*-overrides.json
+tree.txt
+videothinker-r1-3b_bundle_manifest.json
+
+# Runtime outputs
+batch_*_result.jsonl
+*.log
+*.sqlite
+*.db
+
+# Generated evaluation artifacts
+evaluation/runs/
+evaluation/inspection/
+
+# Model weights and training artifacts
+*.safetensors
+*.bin
+trainer_state.json
+
+# Local caches and downloads
+cache/
+models/
+model_bundle/
