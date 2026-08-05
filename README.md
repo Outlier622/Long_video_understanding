@@ -77,6 +77,8 @@ The inference worker was containerized and deployed with:
 - Amazon DynamoDB
 - Amazon CloudWatch Logs
 
+#### Single-Worker Baseline
+
 A BF16 validation run processed 12 clips on one `g5.xlarge` instance:
 
 | Metric | Result |
@@ -87,6 +89,29 @@ A BF16 validation run processed 12 clips on one `g5.xlarge` instance:
 | Median inference time | 264.1 seconds per clip |
 | Minimum inference time | 217.9 seconds |
 | Maximum inference time | 302.7 seconds |
+
+#### Concurrent Multi-Worker Validation
+
+The same 12-clip workload was then executed with two concurrent AWS Batch GPU workers using two `g5.xlarge` instances.
+
+The workload was divided into two deterministic, non-overlapping shards:
+
+- Worker 0 processed 6 clips
+- Worker 1 processed 6 clips
+
+Results:
+
+| Metric | Result |
+|---|---:|
+| Concurrent GPU workers | 2 |
+| Total clips | 12 |
+| Successful clips | 12 / 12 |
+| Structured JSON parse success | 100% |
+| Duplicate clips | 0 |
+| Missing clips | 0 |
+| Worker failures | 0 |
+
+The experiment verified concurrent shard execution, S3-backed inputs and outputs, DynamoDB-backed job state, and complete output aggregation across multiple GPU workers.
 
 The AWS Batch compute environment scales to zero when idle.
 
