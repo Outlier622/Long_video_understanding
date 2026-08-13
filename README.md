@@ -48,6 +48,27 @@ Under the final 8-frame-per-clip setting:
 - reduced frame inputs by 33.3% compared with 12-frame inference
 - completed with zero sampler failures
 
+### Downstream Information Capture
+
+The final 8-frame pipeline was also evaluated against a 74-clip human-reviewed episode benchmark using the same 0–2 scoring rubric for objects, actions, scenes, hallucination control, event completeness, and overall factual capture.
+
+| Metric | Previous Output | Final 8-Frame Output |
+|---|---:|---:|
+| Object recognition | 56.1% | 84.5% |
+| Action recognition | 52.1% | 76.4% |
+| Scene recognition | 62.9% | 89.9% |
+| Hallucination control | 52.7% | 71.0% |
+| Event completeness | 21.6% | 43.9% |
+| Overall factual capture | 56.8% | 69.6% |
+
+Additional observations:
+
+- high-quality overall outputs increased from 18 to 38 clips
+- clips with severe event omission decreased from 43 to 16
+- the 8-frame setting used 33.3% fewer input frames than the 12-frame setting
+
+These results indicate that the final sampling and inference pipeline improved downstream visual-information capture rather than only improving frame-level sampling metrics.
+
 ### Cross-Clip Context
 
 The pipeline adds bounded context propagation using:
@@ -114,6 +135,25 @@ Results:
 The experiment verified concurrent shard execution, S3-backed inputs and outputs, DynamoDB-backed job state, and complete output aggregation across multiple GPU workers.
 
 The AWS Batch compute environment scales to zero when idle.
+
+#### Full-Episode Multi-Worker Run
+
+The final 8-frame pipeline was executed across the full 24:09 episode using two concurrent AWS Batch GPU workers.
+
+| Metric | Result |
+|---|---:|
+| Total clips | 74 |
+| Concurrent GPU workers | 2 |
+| Worker 0 clips | 37 |
+| Worker 1 clips | 37 |
+| Completed clips | 74 / 74 |
+| Duplicate clips | 0 |
+| Missing clips | 0 |
+| Worker failures | 0 |
+| Structured JSON parse success | 73 / 74 |
+| Average inference time | 268.7 seconds per clip |
+
+The two workers processed deterministic, non-overlapping shards and produced complete coverage of clip IDs 0–73. The only structured-output failure was caused by one response being truncated at the generation-token limit rather than by a worker, GPU, S3, or job-state failure.
 
 ---
 
