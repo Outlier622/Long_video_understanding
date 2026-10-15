@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "baseline_date": "2026-10-14",
+  "platform": "linux/amd64",
+  "runtime_image": {
+    "id": "sha256:ad8633e18d7b966abfbb87adefe459147704cf3ba0dfeef18fb05f21f24e6368",
+    "tag": "videothinker-serving:frozen-20261014",
+    "rootfs_layers": [
+      "sha256:2573e0d8158209ed54ab25c87bcdcb00bd3d2539246960a3d592a1c599d70465",
+      "sha256:d0f994b964fbf9a8f72ceffe842c8a29902139ac4267c15e2180be4581811693",
+      "sha256:88b3ef61d53ea06a7306e7dfb8bec34e5ba6e429a99cbc7388203fac3b236194",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:47736169f39bcaf9901eee11596a8881a1d4461ed24788d3993f5993b43e181a",
+      "sha256:31eb44d03d2e74b1b0cf46984a04a9c9fe4002c5d2f98e540a056de128173b9b",
+      "sha256:f66d8ad1782b6059afa3cde5af3b4a4c5b16674fe9ba120f6d64d71ed88efa0f",
+      "sha256:1eb68b2039fc85309bf7aa50e8022a451509c4c4eb0401bf2414e9f79422c6b0",
+      "sha256:b7750a0134ea56a94787ecf49bcef4f2b88fc9205e11fb13ffce5834fdd9b3eb",
+      "sha256:10bddc089262dd4cbb521499a8ee1a9e77b2d38dfecbb8f8bda6e90ebaf5854c",
+      "sha256:ca848b30aa7a964feabb80d4eac72e398345ec4cd91e38e7a9f8033c9ab6df5d",
+      "sha256:aa59896fcdddf1d5762aa3339c19f75a613870d7115c6f385323e809ae5a4d16",
+      "sha256:5eaa7738ba11653a883a424b739bdfb39ef88275092d6eea0a1d83d3baa89ee3",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:dd91990e89320ec65ce5080dc02b52557759821633ef961252e215dd833813c0"
+    ]
+  },
+  "base_image": {
+    "reference": "videothinker-vllm-validation:0.8.5@sha256:421bcd51d2db69a916c2bd375367bb51b4f7e8c28200ee4091414f8d539de2df",
+    "id": "sha256:421bcd51d2db69a916c2bd375367bb51b4f7e8c28200ee4091414f8d539de2df"
+  },
+  "docker_server_version": "28.0.4",
+  "gpu_observed": "NVIDIA GeForce RTX 3060 Laptop GPU, 546.29, 6144 MiB",
+  "pip_check": "No broken requirements found.",
+  "archive": {
+    "filename": "serving-images.tar",
+    "size_bytes": 4325050880,
+    "sha256": "1ffba0e752f37a3d711dfbb97697c296a1b306f0f6c1728b9fa6391a7aa20ec4"
+  },
+  "snapshot_files_sha256": {
+    "runtime.lock.json": "4cd97a09a8cf77d39fd3ec9fbd0d1586ab82aa864c8bf12e510a617b5b927d16",
+    "model.lock.json": "e87e44410b7428a70a4f909453cccfb088a884764657a80619b729f1fc8fda4d",
+    "requirements.constraints.txt": "8acbf83395f9e1648ef57d7d9e1b369670483878810ecbf72bb5c036e38ab858",
+    "os-packages.lock.txt": "fcaa264a8081cc7018cf5916dede0a69966e718e46b9240b4f59f3acfac710cd",
+    "pip-freeze.raw.txt": "fef791e8a283162256f5706141f0b7001abbfb34580d91266a9e7d9448b15e0e",
+    "compose.frozen.json": "4574c583fd889e34b97c202c0c74d79ca73a19f831af5d8f5939c9c5d79722a7"
+  },
+  "host_files_sha256": {
+    "Dockerfile.serving": "cdaf36070f8f3c35e444ff853d7de8e59c811ac2df13db667b15ea52a2e69dbf",
+    "compose.serving.yml": "41a742e3792f886ee4d4f49df545585a41fa30f2a56d4b3f06a82cc26772e1f3",
+    "scripts/collect_serving_environment.py": "cee45e3ffb94c7b3fc1e2b25fe83a493f67276a7cc143133aaa65209821c0a03",
+    "scripts/snapshot_serving_environment.py": "3a4d0613ca1218299a7b61a773c992a23af42b4e1e4647d3cefee9bd52eaeff7",
+    ".gitattributes": "f3be9db201515949a4178466b1b5800242bb880b064c2ff742481abf9828791d"
+  },
+  "serving_environment": {
+    "CPU_OFFLOAD_GB": "6",
+    "ENGINE_CHECK_FAILURE_LIMIT": "3",
+    "ENGINE_CHECK_INTERVAL_SECONDS": "5",
+    "ENGINE_CHECK_TIMEOUT_SECONDS": "5",
+    "GPU_MEMORY_UTILIZATION": "0.8",
+    "MODEL_PATH": "/model",
+    "MODEL_STARTUP_TIMEOUT_SECONDS": "600",
+    "SERVICE_UNRESPONSIVE_TIMEOUT_SECONDS": "60",
+    "VIDEO_DATA_ROOT": "/data"
+  },
+  "container_configuration": {
+    "entrypoint": [
+      "python",
+      "-m",
+      "uvicorn",
+      "src.serving.app:app",
+      "--host",
+      "0.0.0.0",
+      "--port",
+      "8000",
+      "--workers",
+      "1"
+    ],
+    "working_directory": "/app",
+    "restart_policy": {
+      "Name": "unless-stopped",
+      "MaximumRetryCount": 0
+    },
+    "shm_size_bytes": 1073741824,
+    "gpu_requests": [
+      {
+        "Driver": "nvidia",
+        "Count": 1,
+        "DeviceIDs": null,
+        "Capabilities": [
+          [
+            "gpu"
+          ]
+        ],
+        "Options": null
+      }
+    ],
+    "port_bindings": {
+      "8000/tcp": [
+        {
+          "HostIp": "127.0.0.1",
+          "HostPort": "8000"
+        }
+      ]
+    }
+  },
+  "limits": "Image archive excludes model/data mounts, GPU driver, Docker Desktop and host OS.",
+  "host_files_lf_sha256": {
+    "Dockerfile.serving": "cdaf36070f8f3c35e444ff853d7de8e59c811ac2df13db667b15ea52a2e69dbf",
+    "compose.serving.yml": "41a742e3792f886ee4d4f49df545585a41fa30f2a56d4b3f06a82cc26772e1f3",
+    "scripts/collect_serving_environment.py": "cee45e3ffb94c7b3fc1e2b25fe83a493f67276a7cc143133aaa65209821c0a03",
+    "scripts/snapshot_serving_environment.py": "3a4d0613ca1218299a7b61a773c992a23af42b4e1e4647d3cefee9bd52eaeff7",
+    ".gitattributes": "f3be9db201515949a4178466b1b5800242bb880b064c2ff742481abf9828791d"
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "name": "long_video_understanding_clean",
+  "networks": {
+    "default": {
+      "name": "long_video_understanding_clean_default",
+      "ipam": {}
+    }
+  },
+  "services": {
+    "inference": {
+      "command": null,
+      "container_name": "videothinker-serving",
+      "deploy": {
+        "resources": {
+          "reservations": {
+            "devices": [
+              {
+                "capabilities": [
+                  "gpu"
+                ],
+                "driver": "nvidia",
+                "count": 1
+              }
+            ]
+          }
+        },
+        "placement": {}
+      },
+      "entrypoint": null,
+      "environment": {
+        "CPU_OFFLOAD_GB": "6",
+        "ENGINE_CHECK_FAILURE_LIMIT": "3",
+        "ENGINE_CHECK_INTERVAL_SECONDS": "5",
+        "ENGINE_CHECK_TIMEOUT_SECONDS": "5",
+        "GPU_MEMORY_UTILIZATION": "0.8",
+        "MODEL_PATH": "/model",
+        "MODEL_STARTUP_TIMEOUT_SECONDS": "600",
+        "SERVICE_UNRESPONSIVE_TIMEOUT_SECONDS": "60",
+        "VIDEO_DATA_ROOT": "/data"
+      },
+      "image": "videothinker-serving:frozen-20261014@sha256:ad8633e18d7b966abfbb87adefe459147704cf3ba0dfeef18fb05f21f24e6368",
+      "networks": {
+        "default": null
+      },
+      "ports": [
+        {
+          "mode": "ingress",
+          "host_ip": "127.0.0.1",
+          "target": 8000,
+          "published": "8000",
+          "protocol": "tcp"
+        }
+      ],
+      "restart": "unless-stopped",
+      "shm_size": "1073741824",
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "${VIDEO_MODEL_DIR:-D:/projects/VideoThinker-R1-3B}",
+          "target": "/model",
+          "read_only": true
+        },
+        {
+          "type": "bind",
+          "source": "${VIDEO_DATA_DIR:-D:/projects/longvideo}",
+          "target": "/data",
+          "read_only": true
+        }
+      ],
+      "pull_policy": "never"
+    }
+  }
+}

@@ -1,0 +1,1897 @@
+{
+  "status": "measured",
+  "stages": [
+    {
+      "kind": "diagnostic",
+      "concurrency": 1,
+      "requests": 3,
+      "successes": 3,
+      "status_counts": {
+        "200": 3
+      },
+      "wall_seconds": 62.18531269999221,
+      "error_rate": 0.0,
+      "successful_requests_per_second": 0.04824290286153656,
+      "returned_output_tokens_per_second": 0.771886445784585,
+      "success_latency_seconds": {
+        "p50": 20.736270299879834,
+        "p95": 20.744527349993586,
+        "p99": 20.7452613100037
+      },
+      "all_response_p95_seconds": 20.744527349993586,
+      "valid_structured_outputs": 0,
+      "percentiles_are_exploratory": true
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 2,
+      "requests": 6,
+      "successes": 3,
+      "status_counts": {
+        "200": 3,
+        "429": 3
+      },
+      "wall_seconds": 62.3217112000566,
+      "error_rate": 0.5,
+      "successful_requests_per_second": 0.048137317513150625,
+      "returned_output_tokens_per_second": 0.77019708021041,
+      "success_latency_seconds": {
+        "p50": 20.774950499879196,
+        "p95": 20.82426608998794,
+        "p99": 20.82864969799761
+      },
+      "all_response_p95_seconds": 20.816046824969817,
+      "valid_structured_outputs": 0,
+      "percentiles_are_exploratory": true
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "requests": 12,
+      "successes": 3,
+      "status_counts": {
+        "429": 9,
+        "200": 3
+      },
+      "wall_seconds": 62.41581290005706,
+      "error_rate": 0.75,
+      "successful_requests_per_second": 0.048064742901029446,
+      "returned_output_tokens_per_second": 0.7690358864164711,
+      "success_latency_seconds": {
+        "p50": 20.808414599858224,
+        "p95": 20.815783440019004,
+        "p99": 20.816438448033296
+      },
+      "all_response_p95_seconds": 20.812099019938614,
+      "valid_structured_outputs": 0,
+      "percentiles_are_exploratory": true
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "requests": 24,
+      "successes": 3,
+      "status_counts": {
+        "429": 21,
+        "200": 3
+      },
+      "wall_seconds": 62.59604199999012,
+      "error_rate": 0.875,
+      "successful_requests_per_second": 0.04792635291542033,
+      "returned_output_tokens_per_second": 0.7668216466467253,
+      "success_latency_seconds": {
+        "p50": 20.87843760009855,
+        "p95": 20.909607210126705,
+        "p99": 20.912377842129207
+      },
+      "all_response_p95_seconds": 20.86651239009807,
+      "valid_structured_outputs": 0,
+      "percentiles_are_exploratory": true
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "requests": 48,
+      "successes": 3,
+      "status_counts": {
+        "429": 45,
+        "200": 3
+      },
+      "wall_seconds": 65.69272019993514,
+      "error_rate": 0.9375,
+      "successful_requests_per_second": 0.045667160544875136,
+      "returned_output_tokens_per_second": 0.7306745687180022,
+      "success_latency_seconds": {
+        "p50": 21.922173799946904,
+        "p95": 22.738641289970836,
+        "p99": 22.811216177972966
+      },
+      "all_response_p95_seconds": 13.632231484982155,
+      "valid_structured_outputs": 0,
+      "percentiles_are_exploratory": true
+    },
+    {
+      "kind": "strict",
+      "concurrency": 1,
+      "requests": 3,
+      "successes": 0,
+      "status_counts": {
+        "502": 3
+      },
+      "wall_seconds": 1554.4644659999758,
+      "error_rate": 1.0,
+      "successful_requests_per_second": 0.0,
+      "returned_output_tokens_per_second": 0.0,
+      "success_latency_seconds": {
+        "p50": null,
+        "p95": null,
+        "p99": null
+      },
+      "all_response_p95_seconds": 588.8602040199796,
+      "valid_structured_outputs": 0,
+      "percentiles_are_exploratory": true
+    }
+  ],
+  "limitations": [
+    "Closed-loop synchronized waves; not an open-loop arrival-rate capacity test.",
+    "One active request limit; concurrent arrivals may be rejected with 429.",
+    "Short diagnostic output is intentionally truncated, not a quality pass.",
+    "P95/P99 on small successful samples are exploratory, not SLO evidence.",
+    "Non-streaming endpoint: TTFT/TPOT unavailable; token rate includes preprocessing and HTTP.",
+    "GPU samples cover the whole device, including other applications.",
+    "No automatic retries; 502 responses do not expose generated token counts."
+  ],
+  "stable_instance": true,
+  "gpu_summary_including_warmup": {
+    "valid_samples": 921,
+    "mean_utilization_percent": 70.04234527687296,
+    "peak_used_memory_mib": 5168.0
+  },
+  "manifest_sha256": "ab2b90bea71bbb5e346685fc583339a7b07572be480273427cb388929717e14d",
+  "configuration": {
+    "rounds": 3,
+    "strict_requests": 3,
+    "short_tokens": 16
+  },
+  "scope": "Local CPU-offloaded GPU baseline, not production capacity or quality acceptance",
+  "runtime_image": "sha256:ad8633e18d7b966abfbb87adefe459147704cf3ba0dfeef18fb05f21f24e6368",
+  "gpu": "NVIDIA GeForce RTX 3060 Laptop GPU, 6144 MiB, driver 546.29",
+  "model_load_seconds": 117.39101831000005,
+  "model_load_count": 1,
+  "final_active_requests": 0,
+  "requests": [
+    {
+      "kind": "diagnostic",
+      "concurrency": 1,
+      "wave": 0,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.701274799881503,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 1,
+      "wave": 1,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.745444800006226,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 1,
+      "wave": 2,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.736270299879834,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 2,
+      "wave": 0,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.774950499879196,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 2,
+      "wave": 0,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.01567740016616881,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 2,
+      "wave": 1,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.714917700039223,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 2,
+      "wave": 1,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.018520599929615855,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 2,
+      "wave": 2,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.829745600000024,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 2,
+      "wave": 2,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.002547699958086014,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 0,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0028810000512748957,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 0,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.81660220003687,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 0,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003145200200378895,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 0,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003894000081345439,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 1,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003805199870839715,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 1,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.78766300017014,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 1,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003104300005361438,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 1,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004491900093853474,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 2,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0037084000650793314,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 2,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003206999972462654,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 2,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.808414599858224,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 4,
+      "wave": 2,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0030169999226927757,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.006445499835535884,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0032317000441253185,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0036766999401152134,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005731400102376938,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 4,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0049934000708162785,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 5,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004250100115314126,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 6,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.79893620009534,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 0,
+      "index": 7,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004437200026586652,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003509199945256114,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003938999958336353,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0045090001076459885,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.913070500129834,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 4,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.00508929998613894,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 5,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0033585999626666307,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 6,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005203600041568279,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 1,
+      "index": 7,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004539899993687868,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004700299818068743,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005445299902930856,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.003878900082781911,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.87843760009855,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 4,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005774300079792738,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 5,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.014696399914100766,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 6,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005774799967184663,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 8,
+      "wave": 2,
+      "index": 7,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.015606800094246864,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005441199988126755,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 20.933665100019425,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.009111300110816956,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0724261999130249,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 4,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.00876400014385581,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 5,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.009737799875438213,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 6,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.006090400042012334,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 7,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.00713990000076592,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 8,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0049882999155670404,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 9,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.007206499809399247,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 10,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.009800100000575185,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 11,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.07131409994326532,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 12,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.008728399872779846,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 13,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005829099798575044,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 14,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004252699902281165,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 0,
+      "index": 15,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004915900062769651,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0052156001329422,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 21.922173799946904,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.007855499861761928,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005871200002729893,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 4,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.008670400129631162,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 5,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.004186099860817194,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 6,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.007919300114735961,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 7,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005289499880746007,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 8,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.007991799851879478,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 9,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005829199915751815,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 10,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.00487559987232089,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 11,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.008542000083252788,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 12,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.006470199907198548,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 13,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.009104599943384528,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 14,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.0070627001114189625,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 1,
+      "index": 15,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.008570800069719553,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.017421100055798888,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 1,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.008886300027370453,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 2,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.009213000070303679,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 3,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.014174000127241015,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 4,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.013821899890899658,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 5,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.006067399866878986,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 6,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.011378100141882896,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 7,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.009742900030687451,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 8,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.008797799935564399,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 9,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.010949900140985847,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 10,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.01621769997291267,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 11,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.006321900058537722,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 12,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.005898300092667341,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 13,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 200,
+      "client_seconds": 22.829359899973497,
+      "output_tokens": 16,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 14,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.01366779999807477,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "diagnostic",
+      "concurrency": 16,
+      "wave": 2,
+      "index": 15,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 16,
+        "require_json": false,
+        "timeout_seconds": 600
+      },
+      "status": 429,
+      "client_seconds": 0.013917600037530065,
+      "output_tokens": null,
+      "validation_errors": []
+    },
+    {
+      "kind": "strict",
+      "concurrency": 1,
+      "wave": 0,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 1,
+        "max_new_tokens": 500,
+        "require_json": true,
+        "timeout_seconds": 600
+      },
+      "status": 502,
+      "client_seconds": 432.8226929998491,
+      "output_tokens": null,
+      "validation_errors": [
+        {
+          "path": [
+            "summary"
+          ],
+          "code": "word_limit",
+          "message": "Summary has 38 words; maximum is 35"
+        }
+      ]
+    },
+    {
+      "kind": "strict",
+      "concurrency": 1,
+      "wave": 1,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 3,
+        "max_new_tokens": 500,
+        "require_json": true,
+        "timeout_seconds": 600
+      },
+      "status": 502,
+      "client_seconds": 525.7702545998618,
+      "output_tokens": null,
+      "validation_errors": [
+        {
+          "path": [
+            "summary"
+          ],
+          "code": "word_limit",
+          "message": "Summary has 57 words; maximum is 35"
+        },
+        {
+          "path": [
+            "events",
+            0,
+            "frame_references",
+            0
+          ],
+          "code": "invalid_frame_reference",
+          "message": "Reference must be one of: Frame 00, Frame 01, Frame 02, Frame 03, Frame 04, Frame 05, Frame 06, Frame 07"
+        },
+        {
+          "path": [
+            "events",
+            1,
+            "frame_references",
+            0
+          ],
+          "code": "invalid_frame_reference",
+          "message": "Reference must be one of: Frame 00, Frame 01, Frame 02, Frame 03, Frame 04, Frame 05, Frame 06, Frame 07"
+        },
+        {
+          "path": [
+            "events",
+            2,
+            "frame_references",
+            0
+          ],
+          "code": "invalid_frame_reference",
+          "message": "Reference must be one of: Frame 00, Frame 01, Frame 02, Frame 03, Frame 04, Frame 05, Frame 06, Frame 07"
+        }
+      ]
+    },
+    {
+      "kind": "strict",
+      "concurrency": 1,
+      "wave": 2,
+      "index": 0,
+      "request": {
+        "episode": "ep02",
+        "clip_id": 14,
+        "max_new_tokens": 500,
+        "require_json": true,
+        "timeout_seconds": 600
+      },
+      "status": 502,
+      "client_seconds": 595.8701983999927,
+      "output_tokens": null,
+      "validation_errors": [
+        {
+          "path": [
+            "summary"
+          ],
+          "code": "word_limit",
+          "message": "Summary has 74 words; maximum is 35"
+        }
+      ]
+    }
+  ],
+  "inputs": [
+    {
+      "clip_id": 1,
+      "frame_sha256": {
+        "00_t000.000_f0.jpg": "2fa73814b1acfcebd917e17278f52d57a730c56f82a876274264dabfd1cd85bd",
+        "01_t002.880_f72.jpg": "813c11a941f8627536b93bcf942201c3e7d4b90cf7651b1aeb9de9a517cce1f0",
+        "02_t008.640_f216.jpg": "08736f7e93295bd383c51ccf8b0fbf08bdf38b6db20a633abf78ea23358d0aa7",
+        "03_t010.080_f252.jpg": "956528bdf55350f37829bf13e8213dbe91a4c17d558eddf078986b6acce2354d",
+        "04_t012.000_f300.jpg": "112aa0cca4408134c701cd552777aedac40e6ed879b7edd01da093c2ad0b11e4",
+        "05_t013.920_f348.jpg": "2fbea38813ab0a3f3a1323c598c70ef53d73da08575b79c7d3daf8249a07d8b9",
+        "06_t016.800_f420.jpg": "cdc9a49424b73d153586c8a445ea8fc009069d4b77bdee4bdd0418b7bc717d53",
+        "07_t019.680_f492.jpg": "bf04e9a7b9626df4b3f37aef5d4e77a8b7900b45fd2a01370d688bdbdebf693b"
+      }
+    },
+    {
+      "clip_id": 3,
+      "frame_sha256": {
+        "00_t000.000_f0.jpg": "a3d1bbddea31c2d24a7b39bc195a788511b4b24351ffa60bf813a71e7798ef66",
+        "01_t003.840_f96.jpg": "049d3a115d1fb7e3ccd37b38c8253102c7a0cf45134efc997ebd38df28f01625",
+        "02_t007.680_f192.jpg": "f274b94a1d05bacace4c628f11125b69fa66664c379db84c647e178c7a8f9526",
+        "03_t010.080_f252.jpg": "0872809549f59357607d59eda0e5638338f46a10c7f2b3facc698a325f0e0cdd",
+        "04_t012.960_f324.jpg": "12d69ce457245b3b94fca9febe636ff22c8b65e014fb4fc38f444c9e4cd385cc",
+        "05_t014.400_f360.jpg": "f1f26f7d7c9ea5dcfd332f7e5aefae37c313f2b123a3e60d9d4d98307be644cf",
+        "06_t016.800_f420.jpg": "909f2f1796510284baf5fefdcacad2fc50c05a304e57c5cdc8d2aa8fe683dc7b",
+        "07_t019.680_f492.jpg": "53808684809873b11cd3629ec2f8501c993a663ef3655cd86b2f3f69519b01d9"
+      }
+    },
+    {
+      "clip_id": 14,
+      "frame_sha256": {
+        "00_t000.000_f0.jpg": "4756a1a97e70439a13710a12364709484260e74ee81687b9198e8887d022bf19",
+        "01_t002.400_f60.jpg": "8cf963149f8688e3082257e37334f4988b444f477f511f883799ab2ed1092b1a",
+        "02_t004.800_f120.jpg": "50a1569bbffdd010e86d7d3a5f1adf0ccab2f5d81cf17baaf9081d70a010db57",
+        "03_t006.240_f156.jpg": "39049519443f6b1b834a6cbe9f01bf2a12d51f7c7041b865dbbfa0af284ffda9",
+        "04_t008.160_f204.jpg": "4fac9a6fbb69ad66476d0065a78ec5540dd037b98261466a1aaf60c7ff4d05b6",
+        "05_t010.080_f252.jpg": "d766b0be2dacf4121e07202c035bf800600b0abce68ad81a868a9926dfa100ce",
+        "06_t011.520_f288.jpg": "2d75bbb93f59ba03781b3176dcc25b9cb99f066ec13c8bf921cdc3a4a50f98b3",
+        "07_t019.680_f492.jpg": "92845947e3f01ba17a4a990f47540135095f41f5d676746c759ecc2c8ce807ca"
+      }
+    }
+  ],
+  "warmup_excluded": {
+    "status": 200,
+    "client_seconds": 22.815919500077143,
+    "output_tokens": 16
+  },
+  "publication_notes": "Raw HTTP text, machine paths, instance/request identifiers, images and full GPU logs are retained locally. Request status/latency and metric inputs are published here."
+}

@@ -1,0 +1,2 @@
+# Preserve the measured client's bytes so its published SHA256 survives checkout.
+serving-20261014/client-used.py -text

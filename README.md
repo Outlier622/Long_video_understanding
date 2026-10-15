@@ -22,6 +22,28 @@ The base model is **VideoThinker-R1-3B**, derived from the Qwen2.5-VL model fami
 
 ## Key Results
 
+### Resident HTTP Model Serving
+
+The project also provides a local FastAPI service backed by one resident vLLM
+engine, with readiness checks, bounded admission, cancellation, strict output
+validation and automatic process recovery. Docker configuration and a frozen
+runtime inventory are included; model weights, video inputs and Docker image
+archives are supplied separately.
+
+The October 14, 2026 baseline on an RTX 3060 Laptop GPU (6 GiB, CPU offload)
+measured approximately **20.7 seconds per 16-token diagnostic request** and
+**0.048 successful requests/second** at concurrency 1. With the current single
+active-request limit, higher concurrency mostly produced HTTP 429 rejections.
+Three complete-output requests took **433–596 seconds**, and **0/3 passed the
+strict output contract**, principally because summaries exceeded the word limit.
+These measurements establish a local baseline; they do not establish production
+capacity or output-quality acceptance.
+
+- [HTTP service and validation](docs/http_serving.md)
+- [Frozen environment and restoration](docs/environment_freeze.md)
+- [Performance workload, limitations and results](docs/performance_baseline.md)
+- [Published baseline evidence](evaluation/baselines/serving-20261014/report.md)
+
 ### Selective Keyframe Sampling
 
 The final sampler combines:

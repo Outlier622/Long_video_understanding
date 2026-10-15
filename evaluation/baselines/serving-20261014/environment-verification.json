@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "runtime_image_id": "sha256:ad8633e18d7b966abfbb87adefe459147704cf3ba0dfeef18fb05f21f24e6368",
+  "snapshot_integrity": true,
+  "host_source_matches": true,
+  "full_model_hashes_verified": 13,
+  "archive_verified": false,
+  "live_container_verified": true,
+  "gpu_baseline_matches": true
+}

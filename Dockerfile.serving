@@ -1,0 +1,7 @@
+FROM videothinker-vllm-validation:0.8.5@sha256:421bcd51d2db69a916c2bd375367bb51b4f7e8c28200ee4091414f8d539de2df
+WORKDIR /app
+COPY src /app/src
+ENV PYTHONPATH=/app VLLM_HOST_IP=127.0.0.1 GLOO_SOCKET_IFNAME=lo
+EXPOSE 8000
+HEALTHCHECK --interval=15s --timeout=5s --start-period=240s --retries=3 CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health/ready', timeout=4)"
+ENTRYPOINT ["python", "-m", "uvicorn", "src.serving.app:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "1"]

@@ -1,0 +1,57 @@
+{
+  "files": {
+    "added_tokens.json": {
+      "size_bytes": 629,
+      "sha256": "f0acedf99e19ec0a5b797ffbd0b94328172ccd90f7f385bbc521cda2701b03ab"
+    },
+    "chat_template.json": {
+      "size_bytes": 1052,
+      "sha256": "810cb3e4cfcde3816316f7abd07ad2faa60fffbec4e9e3709f064a1a22403bde"
+    },
+    "config.json": {
+      "size_bytes": 1555,
+      "sha256": "42c9a50f849941a0ffcebc55ec9d319a16b9225d50e038bc29bc4b9ae61b3b44"
+    },
+    "generation_config.json": {
+      "size_bytes": 296,
+      "sha256": "0ebaf1f6535a4837b8096c51ef44da85f56339c1a33557f0bc6f29027958fbea"
+    },
+    "merges.txt": {
+      "size_bytes": 1823241,
+      "sha256": "b8e04af9c950e393054010dcef499c3f005e803e9b2da1a09b96a26c33266eb1"
+    },
+    "model-00001-of-00002.safetensors": {
+      "size_bytes": 4997750760,
+      "sha256": "4bc30cafe075491ca073c36cfddae587d233c6cda9df2498ab95c8bafe36da9b"
+    },
+    "model-00002-of-00002.safetensors": {
+      "size_bytes": 2511587184,
+      "sha256": "695c490d29358f748ef6a250a33f6580c6346921a3892c1f351739b95b8d4dbe"
+    },
+    "model.safetensors.index.json": {
+      "size_bytes": 66279,
+      "sha256": "6efe6007698aec52cb0d02e897dfef2d4f60b37b26f28d0d18c029aeb97c8c6e"
+    },
+    "preprocessor_config.json": {
+      "size_bytes": 604,
+      "sha256": "05a2b91b2fcfa6e1549fbb7caa705c51d22ded94f5f88bef1ee15925842de660"
+    },
+    "special_tokens_map.json": {
+      "size_bytes": 644,
+      "sha256": "57255613bbe23c9497211ca68561ff429a51e871dbaf5a59998fa4c8f7fe168a"
+    },
+    "tokenizer.json": {
+      "size_bytes": 11422063,
+      "sha256": "5eee858c5123a4279c3e1f7b81247343f356ac767940b2692a928ad929543214"
+    },
+    "tokenizer_config.json": {
+      "size_bytes": 5985,
+      "sha256": "ffd41bed1432831756b6268e8b0464bc912918d3f2e44297af150e56001f8ce7"
+    },
+    "vocab.json": {
+      "size_bytes": 2776833,
+      "sha256": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    }
+  },
+  "scope": "Full SHA256 of inference configuration, tokenizer and indexed safetensors shards"
+}

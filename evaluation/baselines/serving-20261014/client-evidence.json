@@ -1,0 +1,4 @@
+{
+  "sha256": "48978913fe9c1bae40e743ce5fac02a2a156b4bfbf4883078c8ad217184fe4a0",
+  "note": "Running client revision before metadata-only timestamp/platform additions; metric calculation and workload identical to repository script."
+}
